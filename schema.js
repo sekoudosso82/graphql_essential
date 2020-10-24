@@ -1,10 +1,9 @@
-import { buildSchema  } from 'graphql';
-
+import { buildSchema } from 'graphql';
 
 const schema = buildSchema(`
-    type query {
+    type Query {
         hello: String
-    }    
+    }
 `)
 
-export default schema
+export default schema;
