@@ -13,29 +13,20 @@ class Friend {
 }
 const friendDatabase = {};
 
-const resolvers = { 
-    // friend: () => {
-    //     return {
-    //         "id": 111000,
-    //         "firstName": "Sekou",
-    //         "lastName": "Dosso",
-    //         "gender": "Male",
-    //         "language": "French",
-    //         "emails": [
-    //                     { email: "youknowme@gmail.com" },
-    //                     { email: "sekou.dosso82@gmail.com"}
-    //         ],
-    //     }
-    // },
-    getFriend: ({ id }) => {
-        return new Friend(id, friendDatabase[id]);
+// resolver map 
+export const resolvers = {
+    Query: {
+        getFriend: ({ id }) => {
+                return new Friend(id, friendDatabase[id]);
+        },
     },
-    createFriend: ({input}) => {
-        let id = require('crypto').randomBytes(10).toString('hex');
-        friendDatabase[id] = input;
-        return new Friend(id, input);
-    }
-    
+    Mutation: {
+        createFriend: ({input}) => {
+            let id = require('crypto').randomBytes(10).toString('hex');
+            friendDatabase[id] = input;
+            return new Friend(id, input);
+        },
+    },
 };
 
-export default resolvers; 
+// export default resolvers; 
